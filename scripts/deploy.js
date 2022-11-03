@@ -1,11 +1,14 @@
-const hre = require("hardhat");
-
 async function main() {
-  const Marketpalce = await hre.ethers.getContractFactory("TokenTransfer");
+  const Marketplace = await ethers.getContractFactory(
+    "contracts/Marketplace.sol:Marketplace"
+  );
 
-  const marketpalce = await Marketpalce.deploy();
-
-  console.log("NFT Marketpalce contract address: ", marketpalce.address);
+  // Start deployment, returning a promise that resolves to a contract object
+  const marketplace = await Marketplace.deploy();
+  await marketplace.deployed();
+  console.log(
+    ` Contract deployed to address: ${marketplace.address} \n--> Check address: https://goerli.etherscan.io/address/${marketplace.address}`
+  );
 }
 
 main()

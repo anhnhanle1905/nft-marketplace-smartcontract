@@ -1,6 +1,6 @@
 async function main() {
   const Marketplace = await ethers.getContractFactory(
-    "contracts/Marketplace.sol:Marketplace"
+    "contracts/Token.sol:Token"
   );
 
   // Start deployment, returning a promise that resolves to a contract object
@@ -9,6 +9,13 @@ async function main() {
   console.log(
     ` Contract deployed to address: ${marketplace.address} \n--> Check address: https://goerli.etherscan.io/address/${marketplace.address}`
   );
+
+  console.log(`Verifying contract on Etherscan...`);
+
+  await run(`verify:verify`, {
+    address: marketplace.address,
+    constructorArguments: [],
+  });
 }
 
 main()

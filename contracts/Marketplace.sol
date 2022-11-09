@@ -24,8 +24,8 @@ contract Marketplace is Ownable {
     mapping(uint256 => Order) orders;
     uint256 public feeDecimal;
     uint256 public feeRate;
-    address public feeRecipient; //fee để trả cho ng mua
-    EnumerableSet.AddressSet private _supportedPaymentTokens; // giúp marketplace có thể chấp nhận thanh toán bằng nhiều loại erc20 khác nhau
+    address public feeRecipient; //fee buyer pay for owner marketplace
+    EnumerableSet.AddressSet private _supportedPaymentTokens; // help marketplace payment with different types of ERC20 tokens
     event OrderAdded(
         uint256 indexed orderId,
         address indexed seller,
@@ -44,12 +44,11 @@ contract Marketplace is Ownable {
     );
     event FeeRateUpdated(uint256 feeDecimal, uint256 feeRate);
 
-    constructor(
-        address nftAddress_,
-        uint256 feeDecimal_,
-        uint256 feeRate_,
-        address feeRecipient_
-    ) {
+    constructor() {
+        address nftAddress_ = 0x4FB41e38E38Fb7Ba36AE9Aee9D9B9419ffAD7A5A;
+        uint256 feeDecimal_ = 18;
+        uint256 feeRate_ = 0;
+        address feeRecipient_ = 0x94516F310cB119BD79E24eA969b8374025cA9D48; // Owner Marketplace address wallet
         require(
             nftAddress_ != address(0),
             "NFTMarketplace: nftAddress_ is zero address"
@@ -180,8 +179,11 @@ contract Marketplace is Ownable {
         emit OrderCancelled(orderId_);
     }
 
-    function executeOrder(uint256 orderId_) external {
+    function executeOrder(uint256 orderId_, uint256 _price) external {
         Order storage _order = orders[orderId_];
+
+        require(_order.price == _price, "NFTMarketplace: price is invalid");
+
         require(_order.price > 0, "NFTMarketplace: order has been canceled");
         require(
             !isSeller(orderId_, _msgSender()),

@@ -8,6 +8,7 @@ module.exports = {
     apiKey: process.env.API_KEY_ETHERSCAN,
   },
   networks: {
+    hardhat: {},
     goerli: {
       url: `https://eth-goerli.alchemyapi.io/v2/${process.env.API_KEY_ALCHEMY}`,
       accounts: [`${process.env.PRIVATE_KEY}`],

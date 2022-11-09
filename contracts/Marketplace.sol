@@ -45,9 +45,9 @@ contract Marketplace is Ownable {
     event FeeRateUpdated(uint256 feeDecimal, uint256 feeRate);
 
     constructor() {
-        address nftAddress_ = 0x4FB41e38E38Fb7Ba36AE9Aee9D9B9419ffAD7A5A; // hardcode address NFT
+``        address nftAddress_ = 0x4FB41e38E38Fb7Ba36AE9Aee9D9B9419ffAD7A5A; // hardcode address NFT
         uint256 feeDecimal_ = 18;
-        uint256 feeRate_ = 0;
+        uint256 feeRate_ = 0; //test
         address feeRecipient_ = 0x94516F310cB119BD79E24eA969b8374025cA9D48; // Owner Marketplace address wallet
         require(
             nftAddress_ != address(0),

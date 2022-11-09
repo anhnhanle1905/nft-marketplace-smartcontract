@@ -21,8 +21,8 @@ contract Token {
     );
 
     constructor() {
-        name = "TestToken";
-        symbol = "LAN";
+        name = "NNG Token";
+        symbol = "NNG";
         decimals = 18;
         uint256 _initialSupply = 1000000000;
 

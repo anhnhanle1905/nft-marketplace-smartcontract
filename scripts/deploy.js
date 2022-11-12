@@ -1,6 +1,6 @@
 async function main() {
   const Marketplace = await ethers.getContractFactory(
-    "contracts/Token.sol:Token"
+    "contracts/NNGToken.sol:NNGToken"
   );
 
   // Start deployment, returning a promise that resolves to a contract object

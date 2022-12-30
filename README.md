@@ -1,9 +1,19 @@
-# NFT Marketplace Project 
+# NFT Marketplace Smart Contract 
 
 Running some of the following tasks:
+
+Compile:
 ```shell
 npx hardhat compile
+```
+
+Deploy:
+```shell
 npx hardhat run scripts/deploy.js --network goerli
+```
+
+Verify:
+```shell
 npx hardhat verify --network goerli <address> <constructor_parameters>
 ```
 # Contract Address

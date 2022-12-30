@@ -1,5 +1,11 @@
 # NFT Marketplace Smart Contract 
 
+## MSSV
+```bash
+19521931 - Lê Anh Nhân
+19521902 - Trần Hiếu Nghĩa
+```
+
 Running some of the following tasks:
 
 Compile:

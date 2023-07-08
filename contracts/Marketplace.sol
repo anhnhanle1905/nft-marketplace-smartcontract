@@ -48,7 +48,7 @@ contract Marketplace is Ownable {
         address nftAddress_ = 0x4FB41e38E38Fb7Ba36AE9Aee9D9B9419ffAD7A5A; // hardcode address NFT
         uint256 feeDecimal_ = 18;
         uint256 feeRate_ = 0; //test
-        address feeRecipient_ = 0x94516F310cB119BD79E24eA969b8374025cA9D48; // Owner Marketplace address wallet
+        address feeRecipient_ = 0x25dcF99D7949b60B02d9B436bdDbbb2ee0BD2926; // Owner Marketplace address wallet
         require(
             nftAddress_ != address(0),
             "NFTMarketplace: nftAddress_ is zero address"
@@ -74,7 +74,7 @@ contract Marketplace is Ownable {
 
     function _updateFeeRate(uint256 feeDecimal_, uint256 feeRate_) internal {
         require(
-            feeRate_ < 10**(feeDecimal_ + 2),
+            feeRate_ < 10 ** (feeDecimal_ + 2),
             "NFTMarketplace: bad fee rate"
         );
         feeDecimal = feeDecimal_;
@@ -82,10 +82,10 @@ contract Marketplace is Ownable {
         emit FeeRateUpdated(feeDecimal_, feeRate_);
     }
 
-    function updateFeeRate(uint256 feeDecimal_, uint256 feeRate_)
-        external
-        onlyOwner
-    {
+    function updateFeeRate(
+        uint256 feeDecimal_,
+        uint256 feeRate_
+    ) external onlyOwner {
         _updateFeeRate(feeDecimal_, feeRate_);
     }
 
@@ -94,14 +94,13 @@ contract Marketplace is Ownable {
         if (feeRate == 0) {
             return 0;
         }
-        return (feeRate * _order.price) / 10**(feeDecimal + 2);
+        return (feeRate * _order.price) / 10 ** (feeDecimal + 2);
     }
 
-    function isSeller(uint256 orderId_, address seller_)
-        public
-        view
-        returns (bool)
-    {
+    function isSeller(
+        uint256 orderId_,
+        address seller_
+    ) public view returns (bool) {
         return orders[orderId_].seller == seller_;
     }
 
@@ -116,11 +115,9 @@ contract Marketplace is Ownable {
         );
     }
 
-    function isPaymentTokenSupported(address paymentToken_)
-        public
-        view
-        returns (bool)
-    {
+    function isPaymentTokenSupported(
+        address paymentToken_
+    ) public view returns (bool) {
         return _supportedPaymentTokens.contains(paymentToken_);
     }
 

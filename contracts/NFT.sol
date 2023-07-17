@@ -11,9 +11,16 @@ contract NFT is ERC721, Ownable {
     Counters.Counter private _tokenIdCount;
     string private _baseTokenURI;
 
-    constructor() ERC721("NFT", "TNFT") {}
+    constructor() ERC721("N2_NFT", "N2 ARENA NFT") {}
 
     function mint(address to_) public onlyOwner returns (uint256) {
+        _tokenIdCount.increment();
+        uint256 _tokenId = _tokenIdCount.current();
+        _mint(to_, _tokenId);
+        return _tokenId;
+    }
+
+    function mintFromUser(address to_) public returns (uint256) {
         _tokenIdCount.increment();
         uint256 _tokenId = _tokenIdCount.current();
         _mint(to_, _tokenId);
@@ -28,13 +35,9 @@ contract NFT is ERC721, Ownable {
         _baseTokenURI = baseTokenURI_;
     }
 
-    function tokenURI(uint256 tokenId_)
-        public
-        view
-        virtual
-        override
-        returns (string memory)
-    {
+    function tokenURI(
+        uint256 tokenId_
+    ) public view virtual override returns (string memory) {
         require(_exists(tokenId_), "MyNFT: URI query for nonexistent token");
 
         string memory baseURI = _baseURI();

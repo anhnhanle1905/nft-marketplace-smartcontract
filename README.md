@@ -1,4 +1,4 @@
-# NFT Marketplace Smart Contract 
+# N2 Arena NFT Marketplace Smart Contract 
 
 ## MSSV
 ```bash
@@ -26,15 +26,15 @@ npx hardhat verify --network goerli <address> <constructor_parameters>
 
 Marketplace contract: 
 ```shell
-0x9b8CE88feAc9CA68AB3F5C393177D83134b6C00c
+0x898256E72bF11AeA2D2c8D1275F644a2Db78AA91
 ```
 
-NNG Token contract: 
+NAT Token contract: 
 ```shell
-0xFf24e9Ce8D1c32f01B24bE7b1C9BED386D43c22F
+0x006B385edB7B58037Dba2796b122871B3208C03f
 ```
 
 NFT contract: 
 ```shell
-0x4FB41e38E38Fb7Ba36AE9Aee9D9B9419ffAD7A5A
+0x2e09D13B2bF47D280d9dfde93aBC8c07D0fd4fDa
 ```
